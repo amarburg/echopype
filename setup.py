@@ -7,6 +7,10 @@ ver_file = os.path.join('echopype', 'version.py')
 with open(ver_file) as f:
     exec(f.read())
 
+with open('requirements.txt') as f:
+    requirements = f.readlines()
+install_requires = [t.strip() for t in requirements]
+
 opts = dict(name=echopype,
             maintainer=MAINTAINER,
             maintainer_email=MAINTAINER_EMAIL,
@@ -22,8 +26,7 @@ opts = dict(name=echopype,
             version=VERSION,
             packages=PACKAGES,
             package_data=PACKAGE_DATA,
-            install_requires=REQUIRES,
-            requires=REQUIRES)
+            install_requires=install_requires)
 
 
 if __name__ == '__main__':
